@@ -199,42 +199,42 @@ export enum FieldDescriptorProto_Type {
    * TYPE_DOUBLE - 0 is reserved for errors.
    * Order is weird for historical reasons.
    */
-  TYPE_DOUBLE = 1,
-  TYPE_FLOAT = 2,
+  TYPE_DOUBLE = "TYPE_DOUBLE",
+  TYPE_FLOAT = "TYPE_FLOAT",
   /**
    * TYPE_INT64 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT64 if
    * negative values are likely.
    */
-  TYPE_INT64 = 3,
-  TYPE_UINT64 = 4,
+  TYPE_INT64 = "TYPE_INT64",
+  TYPE_UINT64 = "TYPE_UINT64",
   /**
    * TYPE_INT32 - Not ZigZag encoded.  Negative numbers take 10 bytes.  Use TYPE_SINT32 if
    * negative values are likely.
    */
-  TYPE_INT32 = 5,
-  TYPE_FIXED64 = 6,
-  TYPE_FIXED32 = 7,
-  TYPE_BOOL = 8,
-  TYPE_STRING = 9,
+  TYPE_INT32 = "TYPE_INT32",
+  TYPE_FIXED64 = "TYPE_FIXED64",
+  TYPE_FIXED32 = "TYPE_FIXED32",
+  TYPE_BOOL = "TYPE_BOOL",
+  TYPE_STRING = "TYPE_STRING",
   /**
    * TYPE_GROUP - Tag-delimited aggregate.
    * Group type is deprecated and not supported in proto3. However, Proto3
    * implementations should still be able to parse the group wire format and
    * treat group fields as unknown fields.
    */
-  TYPE_GROUP = 10,
+  TYPE_GROUP = "TYPE_GROUP",
   /** TYPE_MESSAGE - Length-delimited aggregate. */
-  TYPE_MESSAGE = 11,
+  TYPE_MESSAGE = "TYPE_MESSAGE",
   /** TYPE_BYTES - New in version 2. */
-  TYPE_BYTES = 12,
-  TYPE_UINT32 = 13,
-  TYPE_ENUM = 14,
-  TYPE_SFIXED32 = 15,
-  TYPE_SFIXED64 = 16,
+  TYPE_BYTES = "TYPE_BYTES",
+  TYPE_UINT32 = "TYPE_UINT32",
+  TYPE_ENUM = "TYPE_ENUM",
+  TYPE_SFIXED32 = "TYPE_SFIXED32",
+  TYPE_SFIXED64 = "TYPE_SFIXED64",
   /** TYPE_SINT32 - Uses ZigZag encoding. */
-  TYPE_SINT32 = 17,
+  TYPE_SINT32 = "TYPE_SINT32",
   /** TYPE_SINT64 - Uses ZigZag encoding. */
-  TYPE_SINT64 = 18,
+  TYPE_SINT64 = "TYPE_SINT64",
 }
 
 export function fieldDescriptorProto_TypeFromJSON(object: any): FieldDescriptorProto_Type {
@@ -341,11 +341,54 @@ export function fieldDescriptorProto_TypeToJSON(object: FieldDescriptorProto_Typ
   }
 }
 
+export function fieldDescriptorProto_TypeToNumber(object: FieldDescriptorProto_Type): number {
+  switch (object) {
+    case FieldDescriptorProto_Type.TYPE_DOUBLE:
+      return 1;
+    case FieldDescriptorProto_Type.TYPE_FLOAT:
+      return 2;
+    case FieldDescriptorProto_Type.TYPE_INT64:
+      return 3;
+    case FieldDescriptorProto_Type.TYPE_UINT64:
+      return 4;
+    case FieldDescriptorProto_Type.TYPE_INT32:
+      return 5;
+    case FieldDescriptorProto_Type.TYPE_FIXED64:
+      return 6;
+    case FieldDescriptorProto_Type.TYPE_FIXED32:
+      return 7;
+    case FieldDescriptorProto_Type.TYPE_BOOL:
+      return 8;
+    case FieldDescriptorProto_Type.TYPE_STRING:
+      return 9;
+    case FieldDescriptorProto_Type.TYPE_GROUP:
+      return 10;
+    case FieldDescriptorProto_Type.TYPE_MESSAGE:
+      return 11;
+    case FieldDescriptorProto_Type.TYPE_BYTES:
+      return 12;
+    case FieldDescriptorProto_Type.TYPE_UINT32:
+      return 13;
+    case FieldDescriptorProto_Type.TYPE_ENUM:
+      return 14;
+    case FieldDescriptorProto_Type.TYPE_SFIXED32:
+      return 15;
+    case FieldDescriptorProto_Type.TYPE_SFIXED64:
+      return 16;
+    case FieldDescriptorProto_Type.TYPE_SINT32:
+      return 17;
+    case FieldDescriptorProto_Type.TYPE_SINT64:
+      return 18;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldDescriptorProto_Type");
+  }
+}
+
 export enum FieldDescriptorProto_Label {
   /** LABEL_OPTIONAL - 0 is reserved for errors */
-  LABEL_OPTIONAL = 1,
-  LABEL_REQUIRED = 2,
-  LABEL_REPEATED = 3,
+  LABEL_OPTIONAL = "LABEL_OPTIONAL",
+  LABEL_REQUIRED = "LABEL_REQUIRED",
+  LABEL_REPEATED = "LABEL_REPEATED",
 }
 
 export function fieldDescriptorProto_LabelFromJSON(object: any): FieldDescriptorProto_Label {
@@ -372,6 +415,19 @@ export function fieldDescriptorProto_LabelToJSON(object: FieldDescriptorProto_La
       return "LABEL_REQUIRED";
     case FieldDescriptorProto_Label.LABEL_REPEATED:
       return "LABEL_REPEATED";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldDescriptorProto_Label");
+  }
+}
+
+export function fieldDescriptorProto_LabelToNumber(object: FieldDescriptorProto_Label): number {
+  switch (object) {
+    case FieldDescriptorProto_Label.LABEL_OPTIONAL:
+      return 1;
+    case FieldDescriptorProto_Label.LABEL_REQUIRED:
+      return 2;
+    case FieldDescriptorProto_Label.LABEL_REPEATED:
+      return 3;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldDescriptorProto_Label");
   }
@@ -614,11 +670,11 @@ export interface FileOptions {
 /** Generated classes can be optimized for speed or code size. */
 export enum FileOptions_OptimizeMode {
   /** SPEED - Generate complete code for parsing, serialization, */
-  SPEED = 1,
+  SPEED = "SPEED",
   /** CODE_SIZE - etc. */
-  CODE_SIZE = 2,
+  CODE_SIZE = "CODE_SIZE",
   /** LITE_RUNTIME - Generate code using MessageLite and the lite runtime. */
-  LITE_RUNTIME = 3,
+  LITE_RUNTIME = "LITE_RUNTIME",
 }
 
 export function fileOptions_OptimizeModeFromJSON(object: any): FileOptions_OptimizeMode {
@@ -645,6 +701,19 @@ export function fileOptions_OptimizeModeToJSON(object: FileOptions_OptimizeMode)
       return "CODE_SIZE";
     case FileOptions_OptimizeMode.LITE_RUNTIME:
       return "LITE_RUNTIME";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FileOptions_OptimizeMode");
+  }
+}
+
+export function fileOptions_OptimizeModeToNumber(object: FileOptions_OptimizeMode): number {
+  switch (object) {
+    case FileOptions_OptimizeMode.SPEED:
+      return 1;
+    case FileOptions_OptimizeMode.CODE_SIZE:
+      return 2;
+    case FileOptions_OptimizeMode.LITE_RUNTIME:
+      return 3;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum FileOptions_OptimizeMode");
   }
@@ -808,9 +877,9 @@ export interface FieldOptions {
 
 export enum FieldOptions_CType {
   /** STRING - Default mode. */
-  STRING = 0,
-  CORD = 1,
-  STRING_PIECE = 2,
+  STRING = "STRING",
+  CORD = "CORD",
+  STRING_PIECE = "STRING_PIECE",
 }
 
 export function fieldOptions_CTypeFromJSON(object: any): FieldOptions_CType {
@@ -842,13 +911,26 @@ export function fieldOptions_CTypeToJSON(object: FieldOptions_CType): string {
   }
 }
 
+export function fieldOptions_CTypeToNumber(object: FieldOptions_CType): number {
+  switch (object) {
+    case FieldOptions_CType.STRING:
+      return 0;
+    case FieldOptions_CType.CORD:
+      return 1;
+    case FieldOptions_CType.STRING_PIECE:
+      return 2;
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldOptions_CType");
+  }
+}
+
 export enum FieldOptions_JSType {
   /** JS_NORMAL - Use the default type. */
-  JS_NORMAL = 0,
+  JS_NORMAL = "JS_NORMAL",
   /** JS_STRING - Use JavaScript strings. */
-  JS_STRING = 1,
+  JS_STRING = "JS_STRING",
   /** JS_NUMBER - Use JavaScript numbers. */
-  JS_NUMBER = 2,
+  JS_NUMBER = "JS_NUMBER",
 }
 
 export function fieldOptions_JSTypeFromJSON(object: any): FieldOptions_JSType {
@@ -875,6 +957,19 @@ export function fieldOptions_JSTypeToJSON(object: FieldOptions_JSType): string {
       return "JS_STRING";
     case FieldOptions_JSType.JS_NUMBER:
       return "JS_NUMBER";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldOptions_JSType");
+  }
+}
+
+export function fieldOptions_JSTypeToNumber(object: FieldOptions_JSType): number {
+  switch (object) {
+    case FieldOptions_JSType.JS_NORMAL:
+      return 0;
+    case FieldOptions_JSType.JS_STRING:
+      return 1;
+    case FieldOptions_JSType.JS_NUMBER:
+      return 2;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum FieldOptions_JSType");
   }
@@ -955,11 +1050,11 @@ export interface MethodOptions {
  * methods, and PUT verb for idempotent methods instead of the default POST.
  */
 export enum MethodOptions_IdempotencyLevel {
-  IDEMPOTENCY_UNKNOWN = 0,
+  IDEMPOTENCY_UNKNOWN = "IDEMPOTENCY_UNKNOWN",
   /** NO_SIDE_EFFECTS - implies idempotent */
-  NO_SIDE_EFFECTS = 1,
+  NO_SIDE_EFFECTS = "NO_SIDE_EFFECTS",
   /** IDEMPOTENT - idempotent, but may have side effects */
-  IDEMPOTENT = 2,
+  IDEMPOTENT = "IDEMPOTENT",
 }
 
 export function methodOptions_IdempotencyLevelFromJSON(object: any): MethodOptions_IdempotencyLevel {
@@ -986,6 +1081,19 @@ export function methodOptions_IdempotencyLevelToJSON(object: MethodOptions_Idemp
       return "NO_SIDE_EFFECTS";
     case MethodOptions_IdempotencyLevel.IDEMPOTENT:
       return "IDEMPOTENT";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum MethodOptions_IdempotencyLevel");
+  }
+}
+
+export function methodOptions_IdempotencyLevelToNumber(object: MethodOptions_IdempotencyLevel): number {
+  switch (object) {
+    case MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN:
+      return 0;
+    case MethodOptions_IdempotencyLevel.NO_SIDE_EFFECTS:
+      return 1;
+    case MethodOptions_IdempotencyLevel.IDEMPOTENT:
+      return 2;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum MethodOptions_IdempotencyLevel");
   }
@@ -2087,11 +2195,11 @@ export const FieldDescriptorProto = {
     if (message.number !== undefined && message.number !== 0) {
       writer.uint32(24).int32(message.number);
     }
-    if (message.label !== undefined && message.label !== 1) {
-      writer.uint32(32).int32(message.label);
+    if (message.label !== undefined && message.label !== FieldDescriptorProto_Label.LABEL_OPTIONAL) {
+      writer.uint32(32).int32(fieldDescriptorProto_LabelToNumber(message.label));
     }
-    if (message.type !== undefined && message.type !== 1) {
-      writer.uint32(40).int32(message.type);
+    if (message.type !== undefined && message.type !== FieldDescriptorProto_Type.TYPE_DOUBLE) {
+      writer.uint32(40).int32(fieldDescriptorProto_TypeToNumber(message.type));
     }
     if (message.typeName !== undefined && message.typeName !== "") {
       writer.uint32(50).string(message.typeName);
@@ -2143,14 +2251,14 @@ export const FieldDescriptorProto = {
             break;
           }
 
-          message.label = reader.int32() as any;
+          message.label = fieldDescriptorProto_LabelFromJSON(reader.int32());
           continue;
         case 5:
           if (tag !== 40) {
             break;
           }
 
-          message.type = reader.int32() as any;
+          message.type = fieldDescriptorProto_TypeFromJSON(reader.int32());
           continue;
         case 6:
           if (tag !== 50) {
@@ -2234,10 +2342,10 @@ export const FieldDescriptorProto = {
     if (message.number !== undefined && message.number !== 0) {
       obj.number = Math.round(message.number);
     }
-    if (message.label !== undefined && message.label !== 1) {
+    if (message.label !== undefined && message.label !== FieldDescriptorProto_Label.LABEL_OPTIONAL) {
       obj.label = fieldDescriptorProto_LabelToJSON(message.label);
     }
-    if (message.type !== undefined && message.type !== 1) {
+    if (message.type !== undefined && message.type !== FieldDescriptorProto_Type.TYPE_DOUBLE) {
       obj.type = fieldDescriptorProto_TypeToJSON(message.type);
     }
     if (message.typeName !== undefined && message.typeName !== "") {
@@ -2929,8 +3037,8 @@ export const FileOptions = {
     if (message.javaStringCheckUtf8 === true) {
       writer.uint32(216).bool(message.javaStringCheckUtf8);
     }
-    if (message.optimizeFor !== undefined && message.optimizeFor !== 1) {
-      writer.uint32(72).int32(message.optimizeFor);
+    if (message.optimizeFor !== undefined && message.optimizeFor !== FileOptions_OptimizeMode.SPEED) {
+      writer.uint32(72).int32(fileOptions_OptimizeModeToNumber(message.optimizeFor));
     }
     if (message.goPackage !== undefined && message.goPackage !== "") {
       writer.uint32(90).string(message.goPackage);
@@ -3029,7 +3137,7 @@ export const FileOptions = {
             break;
           }
 
-          message.optimizeFor = reader.int32() as any;
+          message.optimizeFor = fileOptions_OptimizeModeFromJSON(reader.int32());
           continue;
         case 11:
           if (tag !== 90) {
@@ -3201,7 +3309,7 @@ export const FileOptions = {
     if (message.javaStringCheckUtf8 === true) {
       obj.javaStringCheckUtf8 = message.javaStringCheckUtf8;
     }
-    if (message.optimizeFor !== undefined && message.optimizeFor !== 1) {
+    if (message.optimizeFor !== undefined && message.optimizeFor !== FileOptions_OptimizeMode.SPEED) {
       obj.optimizeFor = fileOptions_OptimizeModeToJSON(message.optimizeFor);
     }
     if (message.goPackage !== undefined && message.goPackage !== "") {
@@ -3420,14 +3528,14 @@ function createBaseFieldOptions(): FieldOptions {
 
 export const FieldOptions = {
   encode(message: FieldOptions, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.ctype !== undefined && message.ctype !== 0) {
-      writer.uint32(8).int32(message.ctype);
+    if (message.ctype !== undefined && message.ctype !== FieldOptions_CType.STRING) {
+      writer.uint32(8).int32(fieldOptions_CTypeToNumber(message.ctype));
     }
     if (message.packed === true) {
       writer.uint32(16).bool(message.packed);
     }
-    if (message.jstype !== undefined && message.jstype !== 0) {
-      writer.uint32(48).int32(message.jstype);
+    if (message.jstype !== undefined && message.jstype !== FieldOptions_JSType.JS_NORMAL) {
+      writer.uint32(48).int32(fieldOptions_JSTypeToNumber(message.jstype));
     }
     if (message.lazy === true) {
       writer.uint32(40).bool(message.lazy);
@@ -3458,7 +3566,7 @@ export const FieldOptions = {
             break;
           }
 
-          message.ctype = reader.int32() as any;
+          message.ctype = fieldOptions_CTypeFromJSON(reader.int32());
           continue;
         case 2:
           if (tag !== 16) {
@@ -3472,7 +3580,7 @@ export const FieldOptions = {
             break;
           }
 
-          message.jstype = reader.int32() as any;
+          message.jstype = fieldOptions_JSTypeFromJSON(reader.int32());
           continue;
         case 5:
           if (tag !== 40) {
@@ -3530,13 +3638,13 @@ export const FieldOptions = {
 
   toJSON(message: FieldOptions): unknown {
     const obj: any = {};
-    if (message.ctype !== undefined && message.ctype !== 0) {
+    if (message.ctype !== undefined && message.ctype !== FieldOptions_CType.STRING) {
       obj.ctype = fieldOptions_CTypeToJSON(message.ctype);
     }
     if (message.packed === true) {
       obj.packed = message.packed;
     }
-    if (message.jstype !== undefined && message.jstype !== 0) {
+    if (message.jstype !== undefined && message.jstype !== FieldOptions_JSType.JS_NORMAL) {
       obj.jstype = fieldOptions_JSTypeToJSON(message.jstype);
     }
     if (message.lazy === true) {
@@ -3908,8 +4016,11 @@ export const MethodOptions = {
     if (message.deprecated === true) {
       writer.uint32(264).bool(message.deprecated);
     }
-    if (message.idempotencyLevel !== undefined && message.idempotencyLevel !== 0) {
-      writer.uint32(272).int32(message.idempotencyLevel);
+    if (
+      message.idempotencyLevel !== undefined &&
+      message.idempotencyLevel !== MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN
+    ) {
+      writer.uint32(272).int32(methodOptions_IdempotencyLevelToNumber(message.idempotencyLevel));
     }
     if (message.uninterpretedOption !== undefined && message.uninterpretedOption.length !== 0) {
       for (const v of message.uninterpretedOption) {
@@ -3938,7 +4049,7 @@ export const MethodOptions = {
             break;
           }
 
-          message.idempotencyLevel = reader.int32() as any;
+          message.idempotencyLevel = methodOptions_IdempotencyLevelFromJSON(reader.int32());
           continue;
         case 999:
           if (tag !== 7994) {
@@ -3976,7 +4087,10 @@ export const MethodOptions = {
     if (message.deprecated === true) {
       obj.deprecated = message.deprecated;
     }
-    if (message.idempotencyLevel !== undefined && message.idempotencyLevel !== 0) {
+    if (
+      message.idempotencyLevel !== undefined &&
+      message.idempotencyLevel !== MethodOptions_IdempotencyLevel.IDEMPOTENCY_UNKNOWN
+    ) {
       obj.idempotencyLevel = methodOptions_IdempotencyLevelToJSON(message.idempotencyLevel);
     }
     if (message.uninterpretedOption?.length) {

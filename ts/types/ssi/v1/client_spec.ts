@@ -3,9 +3,9 @@
 export const protobufPackage = "hypersign.ssi.v1";
 
 export enum ClientSpecType {
-  CLIENT_SPEC_TYPE_NONE = 0,
-  CLIENT_SPEC_TYPE_COSMOS_ADR036 = 1,
-  CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN = 2,
+  CLIENT_SPEC_TYPE_NONE = "CLIENT_SPEC_TYPE_NONE",
+  CLIENT_SPEC_TYPE_COSMOS_ADR036 = "CLIENT_SPEC_TYPE_COSMOS_ADR036",
+  CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN = "CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN",
 }
 
 export function clientSpecTypeFromJSON(object: any): ClientSpecType {
@@ -32,6 +32,19 @@ export function clientSpecTypeToJSON(object: ClientSpecType): string {
       return "CLIENT_SPEC_TYPE_COSMOS_ADR036";
     case ClientSpecType.CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN:
       return "CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN";
+    default:
+      throw new globalThis.Error("Unrecognized enum value " + object + " for enum ClientSpecType");
+  }
+}
+
+export function clientSpecTypeToNumber(object: ClientSpecType): number {
+  switch (object) {
+    case ClientSpecType.CLIENT_SPEC_TYPE_NONE:
+      return 0;
+    case ClientSpecType.CLIENT_SPEC_TYPE_COSMOS_ADR036:
+      return 1;
+    case ClientSpecType.CLIENT_SPEC_TYPE_ETH_PERSONAL_SIGN:
+      return 2;
     default:
       throw new globalThis.Error("Unrecognized enum value " + object + " for enum ClientSpecType");
   }

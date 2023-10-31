@@ -11,7 +11,7 @@ export interface CredentialStatusDocument {
   remarks?: string | undefined;
   issuer?: string | undefined;
   issuanceDate?: string | undefined;
-  merkleRootHash?: string | undefined;
+  credentialMerkleRootHash?: string | undefined;
 }
 
 export interface CredentialStatusState {
@@ -43,8 +43,8 @@ export const CredentialStatusDocument = {
     if (message.issuanceDate !== undefined && message.issuanceDate !== "") {
       writer.uint32(50).string(message.issuanceDate);
     }
-    if (message.merkleRootHash !== undefined && message.merkleRootHash !== "") {
-      writer.uint32(58).string(message.merkleRootHash);
+    if (message.credentialMerkleRootHash !== undefined && message.credentialMerkleRootHash !== "") {
+      writer.uint32(58).string(message.credentialMerkleRootHash);
     }
     return writer;
   },
@@ -103,7 +103,7 @@ export const CredentialStatusDocument = {
             break;
           }
 
-          message.merkleRootHash = reader.string();
+          message.credentialMerkleRootHash = reader.string();
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -122,7 +122,9 @@ export const CredentialStatusDocument = {
       remarks: isSet(object.remarks) ? globalThis.String(object.remarks) : undefined,
       issuer: isSet(object.issuer) ? globalThis.String(object.issuer) : undefined,
       issuanceDate: isSet(object.issuanceDate) ? globalThis.String(object.issuanceDate) : undefined,
-      merkleRootHash: isSet(object.merkleRootHash) ? globalThis.String(object.merkleRootHash) : undefined,
+      credentialMerkleRootHash: isSet(object.credentialMerkleRootHash)
+        ? globalThis.String(object.credentialMerkleRootHash)
+        : undefined,
     };
   },
 
@@ -146,8 +148,8 @@ export const CredentialStatusDocument = {
     if (message.issuanceDate !== undefined && message.issuanceDate !== "") {
       obj.issuanceDate = message.issuanceDate;
     }
-    if (message.merkleRootHash !== undefined && message.merkleRootHash !== "") {
-      obj.merkleRootHash = message.merkleRootHash;
+    if (message.credentialMerkleRootHash !== undefined && message.credentialMerkleRootHash !== "") {
+      obj.credentialMerkleRootHash = message.credentialMerkleRootHash;
     }
     return obj;
   },
@@ -163,7 +165,7 @@ export const CredentialStatusDocument = {
     message.remarks = object.remarks ?? undefined;
     message.issuer = object.issuer ?? undefined;
     message.issuanceDate = object.issuanceDate ?? undefined;
-    message.merkleRootHash = object.merkleRootHash ?? undefined;
+    message.credentialMerkleRootHash = object.credentialMerkleRootHash ?? undefined;
     return message;
   },
 };

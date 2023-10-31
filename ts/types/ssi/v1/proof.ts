@@ -1,6 +1,6 @@
 /* eslint-disable */
 import _m0 from "protobufjs/minimal";
-import { ClientSpecType, clientSpecTypeFromJSON, clientSpecTypeToJSON } from "./client_spec";
+import { ClientSpecType, clientSpecTypeFromJSON, clientSpecTypeToJSON, clientSpecTypeToNumber } from "./client_spec";
 
 export const protobufPackage = "hypersign.ssi.v1";
 
@@ -34,8 +34,8 @@ export const DocumentProof = {
     if (message.proofValue !== undefined && message.proofValue !== "") {
       writer.uint32(42).string(message.proofValue);
     }
-    if (message.clientSpecType !== undefined && message.clientSpecType !== 0) {
-      writer.uint32(48).int32(message.clientSpecType);
+    if (message.clientSpecType !== undefined && message.clientSpecType !== ClientSpecType.CLIENT_SPEC_TYPE_NONE) {
+      writer.uint32(48).int32(clientSpecTypeToNumber(message.clientSpecType));
     }
     return writer;
   },
@@ -87,7 +87,7 @@ export const DocumentProof = {
             break;
           }
 
-          message.clientSpecType = reader.int32() as any;
+          message.clientSpecType = clientSpecTypeFromJSON(reader.int32());
           continue;
       }
       if ((tag & 7) === 4 || tag === 0) {
@@ -126,7 +126,7 @@ export const DocumentProof = {
     if (message.proofValue !== undefined && message.proofValue !== "") {
       obj.proofValue = message.proofValue;
     }
-    if (message.clientSpecType !== undefined && message.clientSpecType !== 0) {
+    if (message.clientSpecType !== undefined && message.clientSpecType !== ClientSpecType.CLIENT_SPEC_TYPE_NONE) {
       obj.clientSpecType = clientSpecTypeToJSON(message.clientSpecType);
     }
     return obj;
